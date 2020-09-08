@@ -1,0 +1,13 @@
+.idea
+*.iml
+target/
+.idea/
+.metadata
+.settings
+.classpath
+.project
+*.class
+*.uml
+pid.txt
+.sonar_lock
+/.vscode/
