@@ -34,7 +34,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>**/RewardNetworkTests.java</exclude>
+                        <exclude>**/rewards.RewardNetworkTests.java</exclude>
                         <exclude>**/DBExceptionHandlingAspectTests.java</exclude>
                         <exclude>**/LoggingAspectTests.java</exclude>
                         <exclude>**/RepositoryPerformanceLogTest.java</exclude>

@@ -23,7 +23,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/JdbcRestaurantRepositoryTests.java</exclude>
-                        <exclude>**/RewardNetworkTests.java</exclude>
+                        <exclude>**/rewards.RewardNetworkTests.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>

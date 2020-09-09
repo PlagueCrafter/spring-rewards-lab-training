@@ -35,7 +35,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/JpaAccountRepositoryTests.java</exclude>
-                        <exclude>**/RewardNetworkTests.java</exclude>
+                        <exclude>**/rewards.RewardNetworkTests.java</exclude>
                         <exclude>**/JpaRestaurantRepositoryTests.java</exclude>
                     </excludes>
                 </configuration>

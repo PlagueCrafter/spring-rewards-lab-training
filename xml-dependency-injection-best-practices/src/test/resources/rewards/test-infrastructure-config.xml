@@ -17,9 +17,9 @@
 		pool. -->
 	
 	<!-- TODO 04: use the <import /> tag so the current file always 
-	comes with application-config.xml. Modify the RewardNetworkTests to specify
+	comes with application-config.xml. Modify the rewards.RewardNetworkTests to specify
 	only one file when loading the ApplicationContext.  When done, re-run 
-	RewardNetworkTests, it should pass.	-->
+	rewards.RewardNetworkTests, it should pass.	-->
 	
 
 	<!-- Creates an in-memory "rewards" database populated with test data for 
@@ -29,7 +29,7 @@
 		Set its location attribute to point to /application.properties. 
 		Create a new /application.properties file in the classpath root for it to reference. 
 		Externalize the 'scripts' values used in the 'populator' bean below. 
-		Re-run RewardNetworkTests, it should pass.		
+		Re-run rewards.RewardNetworkTests, it should pass.
 	-->
 		
     <bean id="dataSource" class="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactoryBean">

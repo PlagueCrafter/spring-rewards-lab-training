@@ -48,10 +48,10 @@ public class RewardNetworkImpl implements RewardNetwork {
 		Restaurant restaurant = restaurantRepository.findByMerchantNumber(dining.getMerchantNumber());
 
 		// calculates money benefit ie money saved
-		MonetaryAmount money = restaurant.calculateBenefitFor(account,dining);
+		MonetaryAmount moneyAmount = restaurant.calculateBenefitFor(account,dining);
 
 		// adds the money contribution to the account
-		AccountContribution accountContribution = account.makeContribution(money);
+		AccountContribution accountContribution = account.makeContribution(moneyAmount);
 
 		// this is a void method, thus we're not returning, this only updates the current
 		// beneficiaries money
