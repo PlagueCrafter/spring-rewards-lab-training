@@ -7,11 +7,16 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.persistence.PostLoad;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import common.money.Percentage;
+import org.springframework.stereotype.Repository;
 
 /**
  * Loads restaurants from a data source using the JDBC API.
@@ -31,7 +36,7 @@ import common.money.Percentage;
 /* TODO-08: Experiment with setting the dataSource property using either setter or field injection. 
  * Re-run the test. It should fail. Examine the stack trace and see if you can understand why. 
  * (If not, refer to the detailed lab instructions). We will fix this error in the next step." */
-
+@Repository
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
 	private DataSource dataSource;
@@ -51,11 +56,11 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 
 	public JdbcRestaurantRepository(DataSource dataSource){
 		this.dataSource = dataSource;
-		this.populateRestaurantCache();
+		//this.populateRestaurantCache();
 	}
 	
 	public JdbcRestaurantRepository(){}
-	
+	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
@@ -73,7 +78,10 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 	/* TODO-09: Mark this method with an annotation that will cause it to be executed by
 	 * Spring after constructor / setter initialization has occurred.
 	 * Re-run the RewardNetworkTests test. You should see the test succeed */
-	
+
+	// had to add maven repo to use this annotation https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api
+	// I read that it is deprecated in java 9 and was removed in java 11 hence we have to add it manually
+	@PostConstruct
 	void populateRestaurantCache() {
 		restaurantCache = new HashMap<String, Restaurant>();
 		String sql = "select MERCHANT_NUMBER, NAME, BENEFIT_PERCENTAGE from T_RESTAURANT";
@@ -138,7 +146,8 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 	/* TODO-10: Add a breakpoint inside clearRestaurantCache(). Re-run RewardNetworkTests in debug mode. 
 	 * It seems that this method is never called. Use an annotation to register this method for a 
 	 * destruction lifecycle callback. Re-run the test and the breakpoint should now be reached.  */
-	
+
+	@PreDestroy
 	public 	void clearRestaurantCache() {
 		restaurantCache.clear();
 	}
