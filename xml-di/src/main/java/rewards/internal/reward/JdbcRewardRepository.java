@@ -23,7 +23,7 @@ import common.datetime.SimpleDate;
  */
 //TODO-13: Remove this @Repository annotation and the @Autowired annotation below.
 //Save your work, re-run the RewardNetworkTest.  It should pass.
-@Repository
+//@Repository
 public class JdbcRewardRepository implements RewardRepository {
 
 	private DataSource dataSource;
@@ -32,7 +32,7 @@ public class JdbcRewardRepository implements RewardRepository {
 	 * Sets the data source this repository will use to insert rewards.
 	 * @param dataSource the data source
 	 */
-	@Autowired
+	//@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}

@@ -33,6 +33,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--I ended up adding the dependency to the main POM as the program uses "PostConstruct" and "PreDestroy"
+         at multiple places and due to the deprecation of "PostConstruct" and "PreDestroy" we'll run into issues -->
+        <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
         <!-- Needed for the Spring jdbc namespace -->
         <dependency>
             <groupId>org.springframework</groupId>
