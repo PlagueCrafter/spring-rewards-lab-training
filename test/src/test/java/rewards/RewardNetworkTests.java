@@ -6,10 +6,15 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import common.money.MonetaryAmount;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * A system test that verifies the components of the RewardNetwork application
@@ -61,20 +66,30 @@ import common.money.MonetaryAmount;
 /* TODO 08: Bonus question: see the 'Optional Step' inside the Detailed Instructions.
  */
 
+// comment for usage
+// @ActiveProfiles("jdbc")
+//@ActiveProfiles("stub")
+@ActiveProfiles({ "jdbc-dev", "jdbc" })
+
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestInfrastructureConfig.class)
 public class RewardNetworkTests {
 
 	
 	/**
 	 * The object being tested.
 	 */
+	@Autowired
 	private RewardNetwork rewardNetwork;
 
 	/**
 	 * Need this to enable clean shutdown at the end of the application
 	 */
-	private ConfigurableApplicationContext context;
+	//private ConfigurableApplicationContext context;
 
-	@Before
+/*	@Before
 	public void setUp() {
 		// Create the test configuration for the application from one file
 		context = SpringApplication.run(TestInfrastructureConfig.class);
@@ -87,7 +102,7 @@ public class RewardNetworkTests {
 		// simulate the Spring bean destruction lifecycle:
 		if (context != null)
 			context.close();
-	}
+	}*/
 
 	@Test
 	public void testRewardForDining() {

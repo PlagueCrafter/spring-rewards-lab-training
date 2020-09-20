@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import rewards.AccountContribution;
@@ -22,6 +23,7 @@ import common.datetime.SimpleDate;
  * JDBC implementation of a reward repository that records the result of a reward transaction by inserting a reward
  * confirmation record.
  */
+@Profile("jdbc")
 @Repository
 public class JdbcRewardRepository implements RewardRepository {
 
